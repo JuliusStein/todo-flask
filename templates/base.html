@@ -9,24 +9,34 @@
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </head>
 <body>
-    <h1>GetItDone</h1>
-    <p>Critics agree, GetItDone is "simply the best to-do app on the market, hands down"</p>
-    <form action="">
-        <label for="title">Todo Title:</label>
-        <input type="text" name="todo" /><br>
-        <input type="submit" value="Add"/>
-    </form>
-
-    <!-- Show all todos-->
-    <ul>
+    <!-- This is where the content will be rendered -->
+    <div style="margin-top: 50px" class="ui container">
+        <!-- This is the title and header-->
+        <h1 class = "ui center aliged header">GetItDone</h1>
+        <p class = "ui center aliged">Critics agree, GetItDone is "simply the best to-do app on the market, hands down"</p>
+        <hr>
+        <!-- This is the new todo form -->
+        <form class ="ui form" action="/add" method="post">
+            <div class="field">
+                <label for="title" style="margin-top: 5px">Todo Title:</label>
+                <input type="text" style="margin-bottom: 5px" name="title" placeholder="Input Todo Here"/><br>
+                <button class="ui blue button" style="margin-bottom: 5px" type="submit"> Add </button>
+            </div>
+        </form>
+        <hr>
+        <!-- Block with all todos-->
         {% for todo in todo_list %}
-            <li>{{ todo.id }} | {{ todo.title }}</li>
-            {% if todo.completed %}
-                <span>Completed</span>
+        <div class="ui segment">
+            <p class="ui big header">{{ todo.id }} | {{ todo.title }}</p>
+            {% if todo.complete == False %}
+                <span class="ui gray label">Not Completed</span>
             {% else %}
-                <span>Not Completed</span>
+                <span class="ui green label">Completed</span>
             {% endif %}
-        {% endfor %}
+            <a class="ui blue button" href="/update/{{ todo.id }}"> Update </a>
+            <a class="ui red button" href="/delete/{{ todo.id }}"> Delete </a>
+        </div>
+    </div>
+    {% endfor %}
 </body>
-
 </html>
