@@ -1,5 +1,5 @@
 # todo-flask
-A simple to-do app built and hosted with Flask
+A simple to-do app built and hosted with Flask, with help from [this tutorial](https://www.python-engineer.com/posts/flask-todo-app/).
 
 To run this application locally, you will need to run the following commands:
 
